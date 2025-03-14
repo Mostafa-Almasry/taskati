@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:taskati_task/core/extentions/extentions.dart';
+import 'package:taskati_task/core/services/image_helper.dart';
 import 'package:taskati_task/core/services/local_helper.dart';
 import 'package:taskati_task/core/utils/app_colors.dart';
 import 'package:taskati_task/core/utils/text_styles.dart';
@@ -68,8 +68,13 @@ class _UploadScreenState extends State<UploadScreen> {
               CustomButton(
                 width: 250,
                 text: 'Upload From Camera',
-                onPressed: () {
-                  uploadImage(true);
+                onPressed: () async {
+                  String? newPath = await ImageHelper.pickImage(true);
+                  if (newPath != null) {
+                    setState(() {
+                      path = newPath;
+                    });
+                  }
                 },
               ),
               const SizedBox(
@@ -78,8 +83,13 @@ class _UploadScreenState extends State<UploadScreen> {
               CustomButton(
                 width: 250,
                 text: 'Upload From Gallery',
-                onPressed: () {
-                  uploadImage(false);
+                onPressed: () async {
+                  String? newPath = await ImageHelper.pickImage(true);
+                  if (newPath != null) {
+                    setState(() {
+                      path = newPath;
+                    });
+                  }
                 },
               ),
               const SizedBox(
@@ -100,17 +110,5 @@ class _UploadScreenState extends State<UploadScreen> {
         ),
       ),
     );
-  }
-
-  uploadImage(bool isCamera) async {
-    XFile? pickedImage = await ImagePicker()
-        .pickImage(source: isCamera ? ImageSource.camera : ImageSource.gallery);
-
-    if (pickedImage != null) {
-      // Set the path
-      setState(() {
-        path = pickedImage.path;
-      });
-    }
   }
 }

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:taskati_task/core/extentions/extentions.dart';
 import 'package:taskati_task/core/services/local_helper.dart';
 import 'package:taskati_task/core/utils/app_colors.dart';
 import 'package:taskati_task/core/utils/text_styles.dart';
@@ -35,8 +34,16 @@ class HomeHeader extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () {
-            context.pushTo(ProfileScreen());
+          onTap: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProfileScreen(),
+              ),
+            );
+
+            // Trigger a rebuild after returning from ProfileScreen
+            (context as Element).markNeedsBuild();
           },
           child: CircleAvatar(
             radius: 24,

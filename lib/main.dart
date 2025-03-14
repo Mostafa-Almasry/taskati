@@ -7,13 +7,14 @@ import 'package:taskati_task/core/utils/text_styles.dart';
 import 'package:taskati_task/feature/intro/splash_screen.dart';
 
 Future<void> main() async {
-  //What's Future?
-  WidgetsFlutterBinding
-      .ensureInitialized(); //Ensure everything is initialized before running the application
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+
+  Hive.registerAdapter(TaskModelAdapter());
+
   await Hive.openBox('userBox');
   await Hive.openBox<TaskModel>('taskBox');
-  Hive.registerAdapter(TaskModelAdapter());
+  
   AppLocalStorage.init();
   runApp(const MainApp());
 }

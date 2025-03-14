@@ -45,47 +45,50 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         padding: const EdgeInsets.all(16),
         child: Form(
           key: formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              titleField(),
-              const Gap(12),
-              descriptionField(),
-              const Gap(12),
-              dateField(context),
-              const Gap(12),
-              timeFields(context),
-              const Gap(12),
-              Row(
-                children: [
-                  prioritiesWidget(),
-                  const Spacer(),
-                  CustomButton(
-                      text: 'Create Task',
-                      width: 145,
-                      onPressed: () async {
-                        if (formKey.currentState!.validate()) {
-                          var key =
-                              DateTime.now().millisecondsSinceEpoch.toString() +
-                                  titleController.text;
-                          await AppLocalStorage.cacheTask(
-                              key,
-                              TaskModel(
-                                  id: key,
-                                  title: titleController.text,
-                                  description: descriptionController.text,
-                                  date: dateController.text,
-                                  startTime: startTimeController.text,
-                                  endTime: endTimeController.text,
-                                  color: selectedColor,
-                                  isCompleted: false));
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                titleField(),
+                const Gap(12),
+                descriptionField(),
+                const Gap(12),
+                dateField(context),
+                const Gap(12),
+                timeFields(context),
+                const Gap(12),
+                Row(
+                  children: [
+                    prioritiesWidget(),
+                    const Spacer(),
+                    CustomButton(
+                        text: 'Create Task',
+                        width: 145,
+                        onPressed: () async {
+                          if (formKey.currentState!.validate()) {
+                            var key = DateTime.now()
+                                    .millisecondsSinceEpoch
+                                    .toString() +
+                                titleController.text;
+                            await AppLocalStorage.cacheTask(
+                                key,
+                                TaskModel(
+                                    id: key,
+                                    title: titleController.text,
+                                    description: descriptionController.text,
+                                    date: dateController.text,
+                                    startTime: startTimeController.text,
+                                    endTime: endTimeController.text,
+                                    color: selectedColor,
+                                    isCompleted: false));
 
-                          context.pushReplacement(HomeScreen());
-                        }
-                      })
-                ],
-              )
-            ],
+                            context.pushReplacement(HomeScreen());
+                          }
+                        })
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

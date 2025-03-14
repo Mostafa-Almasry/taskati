@@ -23,7 +23,19 @@ class TasksListBuilder extends StatelessWidget {
               box.values.where((e) => e.date == selectedDate).toList();
           if (tasks.isEmpty) {
             return Center(
-              child: Lottie.asset('assets/images/empty.json'),
+              child: Column(
+                children: [
+                  Lottie.asset('assets/images/empty.json'),
+                  Text(
+                    'You do not have any tasks yet!',
+                    style: getBodyTextStyle(context),
+                  ),
+                  Text(
+                    'Add new tasks to make your days productive.',
+                    style: getBodyTextStyle(context),
+                  ),
+                ],
+              ),
             );
           }
           return ListView.builder(
