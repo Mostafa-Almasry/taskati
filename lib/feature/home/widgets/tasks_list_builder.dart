@@ -30,10 +30,12 @@ class TasksListBuilder extends StatelessWidget {
                     'You do not have any tasks yet!',
                     style: getBodyTextStyle(context),
                   ),
+                  Gap(15),
                   Text(
-                    'Add new tasks to make your days productive.',
+                    'Add tasks to make your day productive',
                     style: getBodyTextStyle(context),
-                  ),
+                    textAlign: TextAlign.center,
+                  )
                 ],
               ),
             );

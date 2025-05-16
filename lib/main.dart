@@ -14,7 +14,7 @@ Future<void> main() async {
 
   await Hive.openBox('userBox');
   await Hive.openBox<TaskModel>('taskBox');
-  
+
   AppLocalStorage.init();
   runApp(const MainApp());
 }
@@ -64,36 +64,50 @@ class MainApp extends StatelessWidget {
                       borderSide:
                           const BorderSide(color: AppColors.redColor)))),
           darkTheme: ThemeData(
-              appBarTheme: AppBarTheme(
-                  backgroundColor: AppColors.darkColor,
-                  elevation: 0,
-                  titleTextStyle: TextStyle(
-                    color: AppColors.whiteColor,
-                    fontSize: 18,
-                  ),
-                  iconTheme:
-                      const IconThemeData(color: AppColors.primaryColor)),
-              colorScheme: ColorScheme.fromSeed(
-                  seedColor: AppColors.primaryColor,
-                  onSurface: AppColors.whiteColor),
-              scaffoldBackgroundColor: AppColors.darkColor,
-              inputDecorationTheme: InputDecorationTheme(
-                  hintStyle: getSmallTextStyle(),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide:
-                          const BorderSide(color: AppColors.primaryColor)),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide:
-                          const BorderSide(color: AppColors.primaryColor)),
-                  errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: const BorderSide(color: AppColors.redColor)),
-                  focusedErrorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide:
-                          const BorderSide(color: AppColors.redColor)))),
+            appBarTheme: AppBarTheme(
+              backgroundColor: AppColors.darkColor,
+              elevation: 0,
+              titleTextStyle: TextStyle(
+                color: AppColors.whiteColor,
+                fontSize: 18,
+              ),
+              iconTheme: const IconThemeData(color: AppColors.primaryColor),
+            ),
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: AppColors.primaryColor,
+              onSurface: AppColors.whiteColor, // Make all text white
+              brightness: Brightness.dark,
+            ),
+            scaffoldBackgroundColor: AppColors.darkColor,
+            inputDecorationTheme: InputDecorationTheme(
+              hintStyle: getSmallTextStyle(),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: const BorderSide(color: AppColors.primaryColor),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: const BorderSide(color: AppColors.primaryColor),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: const BorderSide(color: AppColors.redColor),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: const BorderSide(color: AppColors.redColor),
+              ),
+            ),
+            textSelectionTheme: TextSelectionThemeData(
+              cursorColor: AppColors.primaryColor,
+              selectionColor: AppColors.primaryColor.withOpacity(0.4),
+              selectionHandleColor: AppColors.primaryColor,
+            ),
+            popupMenuTheme: const PopupMenuThemeData(
+              color: Colors.grey, // dark background for popup
+              textStyle: TextStyle(color: Colors.white), // white text
+            ),
+          ),
           home: const SplashScreen(),
         );
       },

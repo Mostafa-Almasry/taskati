@@ -1,0 +1,2 @@
+C:/Users/mosta/Desktop/EraaSoft/session_8_and_9/taskati/android/app/.cxx/Debug/l3e24442/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/mosta/Desktop/EraaSoft/session_8_and_9/taskati/android/app/.cxx/Debug/l3e24442/armeabi-v7a/CMakeFiles/rebuild_cache.dir

@@ -86,6 +86,7 @@ Future<String?> showNameBottomSheet(BuildContext context) async {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextFormField(
+                style: TextStyle(color: AppColors.darkColor),
                 controller: nameController,
                 decoration: InputDecoration(labelText: 'Enter new name'),
               ),

@@ -84,7 +84,7 @@ class _UploadScreenState extends State<UploadScreen> {
                 width: 250,
                 text: 'Upload From Gallery',
                 onPressed: () async {
-                  String? newPath = await ImageHelper.pickImage(true);
+                  String? newPath = await ImageHelper.pickImage(false);
                   if (newPath != null) {
                     setState(() {
                       path = newPath;
