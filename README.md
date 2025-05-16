@@ -1,3 +1,3 @@
-# taskati_task
+# taskati
 
 A new Flutter project.
